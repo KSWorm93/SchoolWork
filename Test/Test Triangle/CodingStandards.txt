@@ -1,0 +1,10 @@
+Coding standards
+
+1: Always make documentation for your methods.
+2: Use the same way of naming the code. eg. camelCase
+3: Keep the imports clean, dont have unused imports
+4: Have author of every file
+5: Use understandable naming for classes, attributes etc.
+6: Keep it in english.
+7: Format the code
+8: Follow general guidelines from default Netbeans intallation and Findbugs plugin

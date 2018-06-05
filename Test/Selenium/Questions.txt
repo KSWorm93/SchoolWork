@@ -1,0 +1,76 @@
+Discuss Pros and Cons with manual versus automated tests
+- Manual tests 
+ Pros:
+ - Highly flexible since a user is during the testing.  
+ - Can be done right away(Assuming the code is ready to be tested)
+ 
+ Cons
+ - Can be slower than a automated test that does the same.
+ - Human error
+ 
+- Automated tests
+ Pros:
+ - Runs quickly
+ - If running test driven development, you get notified if a test fail and you
+   broke the code - this can take time to find out if using manual tests only
+
+ Cons
+ - Can be dependent on third party framework to automate tests.
+ - Limitations in the framework. 
+   Which a human possibly could spot easier than the computer
+
+
+
+
+
+Explain about the Test Pyramid and whether this exercise supported the ideas in 
+the "pyramid"
+- The pyramid tells us about the costs of the tests, and that unit tests are the
+cheapest and UI tests the most expensive.
+In that regard it can be said that you should have a great deal more unit tests
+instead of the UI tests to reduce the costs.
+In our case we did now follow the pyramid since we only have the pricey UI tests.
+
+
+
+
+
+Discuss some of the problems with automated GUI tests 
+and what makes such tests "vulnerable" 
+- GUI tests need to run in a browser.
+Some browsers will not be compatible with your code.
+It can be a real hassle to find the drivers and setup for all browsers
+Load time can vary (request to other server, big load on own server, etc.).
+
+
+
+
+
+Demonstrate details in how to create a Selenium Test 
+using the code for the exercise
+- Look at code and comments in the code file.
+
+
+
+
+
+Explain shortly about the DOM, 
+and how you have read/manipulated DOM-elements in your test 
+- DOM(Document Object Model) is the rendered form of a html page.
+eg. it shows the html page after javascript have had its turn on it, 
+possibly changing something, or added something.
+But instead of viewing the source code html, we see the rendered version, the DOM
+I like this article about it: https://css-tricks.com/dom/
+
+
+
+
+
+Explain how (and why it was necessary) you have solved "waiting" problems in your 
+test
+- If you change the DOM during one of your tests,
+the page will need to render again, and the rendering takes time.
+Where as your code might not take as long time to execute,
+which could result in starting the next step before the rendering is complete.
+Which could give you wrong results.
+We can add a wait that will wait till the rendering is complete before continuing.

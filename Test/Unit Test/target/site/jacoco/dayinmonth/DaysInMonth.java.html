@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DaysInMonth.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">UnitTestingExercise</a> &gt; <a href="index.source.html" class="el_package">dayinmonth</a> &gt; <span class="el_source">DaysInMonth.java</span></div><h1>DaysInMonth.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dayinmonth;
+
+/**
+ *
+ * @author kasper
+ */
+<span class="fc" id="L12">public class DaysInMonth {</span>
+
+    int month;
+    int year;
+    int days;
+
+    /**
+     * Method to get days in month
+     *
+     * @param month month going from 1-12
+     * @param year year going from 0-Integer.MAX
+     * @return days in the month
+     * @throws Exception IllegalArgumentException, if you input month below 1 or
+     * above 12 or year below 0
+     */
+    public int getDaysInMonth(int month, int year) throws Exception {
+<span class="fc" id="L28">        days = 0;</span>
+
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (checkValidInput(month, year)) {</span>
+<span class="fc" id="L31">            days = checkMonth(month, year);</span>
+        }
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (days &lt; 1) {</span>
+<span class="fc" id="L34">            throw new IllegalArgumentException(&quot;Invalid inputs&quot;);</span>
+        }
+<span class="fc" id="L36">        return days;</span>
+    }
+
+    /**
+     * Method to check how many days is in month
+     *
+     * @param month the month you wanna check
+     * @param year year you wanna check - in case of leap year
+     * @return int containing the days in the month
+     */
+    public int checkMonth(int month, int year) {
+        int daysInMonth;
+<span class="pc bpc" id="L48" title="1 of 13 branches missed.">        switch (month) {</span>
+            case 1:
+<span class="fc" id="L50">                daysInMonth = 31;</span>
+<span class="fc" id="L51">                break;</span>
+            case 2:
+<span class="fc" id="L53">                daysInMonth = checkLeapYear(year);</span>
+<span class="fc" id="L54">                break;</span>
+            case 3:
+<span class="fc" id="L56">                daysInMonth = 31;</span>
+<span class="fc" id="L57">                break;</span>
+            case 4:
+<span class="fc" id="L59">                daysInMonth = 30;</span>
+<span class="fc" id="L60">                break;</span>
+            case 5:
+<span class="fc" id="L62">                daysInMonth = 31;</span>
+<span class="fc" id="L63">                break;</span>
+            case 6:
+<span class="fc" id="L65">                daysInMonth = 31;</span>
+<span class="fc" id="L66">                break;</span>
+            case 7:
+<span class="fc" id="L68">                daysInMonth = 31;</span>
+<span class="fc" id="L69">                break;</span>
+            case 8:
+<span class="fc" id="L71">                daysInMonth = 31;</span>
+<span class="fc" id="L72">                break;</span>
+            case 9:
+<span class="fc" id="L74">                daysInMonth = 30;</span>
+<span class="fc" id="L75">                break;</span>
+            case 10:
+<span class="fc" id="L77">                daysInMonth = 31;</span>
+<span class="fc" id="L78">                break;</span>
+            case 11:
+<span class="fc" id="L80">                daysInMonth = 30;</span>
+<span class="fc" id="L81">                break;</span>
+            case 12:
+<span class="fc" id="L83">                daysInMonth = 31;</span>
+<span class="fc" id="L84">                break;</span>
+            default:
+<span class="nc" id="L86">                daysInMonth = 0;</span>
+        }
+<span class="fc" id="L88">        return daysInMonth;</span>
+    }
+
+    /**
+     * Method to check for valid inputs
+     *
+     * @param month int for checking month
+     * @param year int for checking year
+     * @return true if its valid inputs
+     */
+    public boolean checkValidInput(int month, int year) {
+<span class="fc bfc" id="L99" title="All 4 branches covered.">        if (month &lt; 1 || month &gt; 12) {</span>
+<span class="fc" id="L100">            return false;</span>
+        }
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        if (year &lt; 0) {</span>
+<span class="fc" id="L103">            return false;</span>
+        }
+<span class="fc" id="L105">        return true;</span>
+    }
+
+    /**
+     * Method to check if its a leap year giving this rule year must be equally
+     * divided by 4. exception to rule: if year is divided by 100, it needs to
+     * be divided by 400 as well
+     *
+     * @param year
+     * @return
+     */
+    public int checkLeapYear(int year) {
+        int leapYearDays;
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        if (year % 4 != 0) {</span>
+<span class="fc" id="L119">            leapYearDays = 28;</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        } else if (year % 400 == 0) {</span>
+<span class="fc" id="L121">            leapYearDays = 29;</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        } else if (year % 100 == 0) {</span>
+<span class="fc" id="L123">            leapYearDays = 28;</span>
+        } else {
+<span class="fc" id="L125">            leapYearDays = 29;</span>
+        }
+<span class="fc" id="L127">        return leapYearDays;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

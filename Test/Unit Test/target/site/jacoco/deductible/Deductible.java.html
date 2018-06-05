@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Deductible.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">UnitTestingExercise</a> &gt; <a href="index.source.html" class="el_package">deductible</a> &gt; <span class="el_source">Deductible.java</span></div><h1>Deductible.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package deductible;
+
+/**
+ *
+ * @author kasper
+ */
+<span class="fc" id="L12">public class Deductible {</span>
+
+    String visit;
+    boolean decuctible;
+
+    /**
+     * Method to check if its possible to be reimbursed
+     *
+     * @param visit - String containing visit type, eg. &quot;Doctor&quot;
+     * @param decuctible - boolean if you are deductible
+     * @return int for value you will be reimbursed: 0, 50 or 80
+     */
+    public int reimburse(String visit, boolean decuctible) {
+
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (!decuctible) {</span>
+<span class="fc" id="L27">            return 0;</span>
+        }
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (visit.equals(&quot;Doctor&quot;)) {</span>
+<span class="fc" id="L30">            return 50;</span>
+        }
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (visit.equals(&quot;Hospital&quot;)) {</span>
+<span class="fc" id="L33">            return 80;</span>
+        }
+<span class="fc" id="L35">        return 0;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

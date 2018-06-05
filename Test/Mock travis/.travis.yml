@@ -1,0 +1,22 @@
+language: java
+jdk: oraclejdk8
+
+services:
+  - mysql  
+cache:
+  directories:
+    - node_modules
+    - $HOME/.m2
+
+before_install:
+  - npm install 
+  - mysql -e 'CREATE DATABASE usersDB;'
+  
+script: 
+  - mvn verify site
+
+after_success:
+  - surge --project ./target/site --domain mocktravis.surge.sh
+after_failure:
+  #Remove documentation for a failing project
+  - surge teardown mocktravis.surge.sh

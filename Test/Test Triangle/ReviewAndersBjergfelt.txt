@@ -1,0 +1,25 @@
+This is my review based on Anders Bjergfelt
+https://github.com/andersbjergfelt/Triangle_Exercise_Test
+
+
+I have found a few flaws that could have been worked more on.
+You have not handled if the input is something else than a integer
+fx if i input "a" or "2,1" it will throw an exception and the program will crash.
+
+You have handled it in a way that when you catch the exception you will get to the 
+end of the program and be asked "to press any key to continue..." and then i press
+a key, and the program shuts down.
+Its good and bad, i expected it to start over or let me input a new input since it
+told me to "continue", and not to shutdown :)
+
+Other than that i would have liked more documentation in the code, in the form of
+comments for the individual methods to make it clearer what they are doing.
+With that said, i like your naming of methods/variables, they make sense. 
+which helps understand the code better.
+
+And as long as you input correct integers the program function, and you check if
+it is a valid triangle, which is nice :)
+
+
+
+

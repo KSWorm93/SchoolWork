@@ -1,0 +1,13 @@
+A: I have installed the Netbeans plugins Findbugs, SourceCodeMetrics & JacoCoverage
+
+B: I Ran the coding standards using Findbugs, and it found some stuff,
+like missing javadoc. I fixed the warnings they told picked up.
+
+C + D: When running SourceCodeMetrics i get a 1 in Cyclomatic Complexity on the 
+whole project, and 4 in my checkTriangle() method, which is my most complex method.
+SourceCodeMetric uses the first fom of calculating CC, since it takes the number of
+if statements and + 1 to that number.
+
+E: I have not been refactoring after i tested with the metric tool. 
+I have been refactoring my code while i worked on the project.
+

@@ -1,0 +1,77 @@
+Explain the purpose of the Test (what the original test exposed, 
+and what your test expose)
+
+The purpose of the test testAllSnapshots is that it will look at each
+snapshot and match it up against a file.
+For every successfull test, it will add to a counter.
+A big problem for this test, is that it does not give feedback for which tests,
+that fails.
+
+The difference from this and from mine is that my test also gives feedback on which
+test case that failed. Making it easier to see where the problem is.
+
+
+
+
+
+------------
+Explain about Parameterized Tests in JUnit,
+and how you have used it in this exercise.
+
+Parameterized tests is about executing the same test over and over again,
+but with different parameters, which comes from a array of inputs.
+In this example i have used parameterized tests by loading files from the project
+and testing up against 2 files.
+This makes it easy to change the testdata in the future, since only 2 files will
+need to be modified, and no need to touch the code.
+
+
+
+
+------------
+Explain the topic Data Driven Testing, and why it often makes a lot of sense to read test-data from a file.
+
+Data Driven Testing, is when you test something while loading the inputs from
+a seperate file, which contains both the inputs, and the expected results.
+This makes it easy to expand more inputs, since you will only need to add more
+to the file you load from, and the code can stay the same.
+
+
+
+
+------------
+Your answers to the question; whether what you implemented was a Unit Test or a
+JUnit Test, the problems you might have discovered with the test and, 
+your suggestions for ways this could have been fixed.
+
+This is a unit test, using the JUnit framework.
+Unit testing is about testing a small functionality, usually a single function,
+at a time, so you can isolate single pieces of code, to better detect if that part
+of the code is broken, or have issues.
+Furthermore, unit testing is typically automated. It can for instance be made to
+run each time a user pushes something to github, and there execute all the tests.
+Which is a big part in test driven development.
+
+*Update*
+This is not a unittest, it calls a single method, which is a big part of the
+project, and that method will most likely call several other methods. 
+Meaning this is not a a unit test, its closer to a integration test.
+Its still a JUnit test, since it uses the JUnit framework.
+
+
+
+------------
+The steps you took to include Hamcrest matchers in the project, and the difference
+they made for the test
+
+I added the hamcrest dependency to tha maven pom file.
+The reason this is a good addon to the existing tests, is that they give better
+feedback during the tests, for instance it shows which snapshot that
+are not working.
+It also gives great readable code, since it contains of "english" words for
+the method names, making it easy for others to read what the method/test is doing.
+
+
+
+
+

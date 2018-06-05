@@ -1,0 +1,56 @@
+Explain about Test Driven Development and how to use it with Continuous integration
+- Its about testing first and getting a "red" test that fails, and afterwards
+code the project, and make the test "green", pass, and then refactor your code
+to make it easier to read, and perhaps small performance optimizes.
+
+
+
+
+Explain Continuous Integration and principles/tools involved 
+- ci is about delivering code multiple times during the day, to continuosly 
+add value to the customer.
+Usually the code is tested automaticly with building the project on a build server
+that will build your project and test your project by running the tests you made.
+
+
+
+
+
+Explain why Maven (or similar tools) is a "great" match for CI via a Build Server,
+and elaborate on the properties we take advantage of.
+- Maven can be used to download all the dependencies you need and thus make it easy
+to run the project on multiple machines since everybody can run a single command
+that will take care of setting up the project and makes you good to go.
+Maven also has commands that can run all your test classes, making tools like
+travis able to execute the maven commands and run the tests for you.
+ 
+
+
+
+
+Explain how to use separate test phases for Unit Tests 
+and Integration Tests with Maven
+- mvn test runs the unit test commands
+mvn verify runs both the unit tests, and the integration tests,
+which need to be names with "IT" at the end of the name. this might be different
+with junit5
+
+
+
+
+
+Demonstrate CI using Travis (or a similar build server) on a system involving, 
+as a minimum:
+Building the project
+Running all Unit Tests 
+Running all Integrations test, involving a real test database
+Creating Project Reports (Code Coverage, Test Results etc.)
+- this is done in the code and travis.yml file
+See the code for test files
+maven commands starts the tests
+travis is hooked to my github repository, and takes action on each push
+travis.yml setup the java, mysql db, node modules and start the mvn command
+when it is done it will generate the project report and deploy it using surge.sh
+
+
+

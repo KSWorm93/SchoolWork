@@ -1,0 +1,29 @@
+Add 3 numbers in the console to indicate the length of the 3 lines.
+
+1:
+Input: 5 - 5 - 5
+Expected output: Equilateral triangle
+
+2:
+Input: 3 - 4 - 5
+Expected output: Scalene triangle
+
+3:
+Input: 6 - 6 - 3
+Expected output: Isosceles triangle
+
+4:
+Input: 0 - 0 - 0
+Expected output: Not a valid triangle
+
+5:
+Input: -1 - 1 - 2
+Expected output: Not a valid triangle
+
+6:
+Input: 20 - 2 - 2
+Expected output: Not a valid triangle
+
+7:
+Input: a - 1 - 1
+Expected output: Not a number

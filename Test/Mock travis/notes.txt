@@ -1,0 +1,18 @@
+Thing to take note of i found during this exercise:
+
+Maven from commandline/terminal use different(by default, on my machine at least)
+versions of the plugins, than the netbeans maven.
+
+so when trying to execute some of the commands
+
+mvn compile
+mvn verify
+mvn test
+mvn verify site
+
+some of them will fail, because there was a bug in the version i used on my machine
+i had to add the specific plugin to the pom file to avoid getting that bug.
+
+to sum it up: add plugin to pom with specific version number if working on multiple
+machines, or in teams. to avoid bugs from different versions of maven on
+the local machines running them.
