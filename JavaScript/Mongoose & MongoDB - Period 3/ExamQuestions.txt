@@ -1,0 +1,75 @@
+1) Explain, generally, what is meant by a NoSQL database
+- NoSQL is a non relational database, which doesnt need SQL-queries to work. 
+It does not store its data in tables as the relational database does, which is one of the points to why it scales so well with more data in it, since you can easily expand it, unlike the relational database.
+There are different NoSQL databases, and they work slightly different from one another in the way they store the data.
+the different types are:
+Key-value,
+Wide-Column,
+Graph,
+Document.
+
+
+2) Explain Pros & Cons in using a NoSQL database like MongoDB as your data store, compared to a traditional Relational SQL Database like MySQL.
+
+NoSQL pros:
++ Easily Scalability
++ High Performance
++ Flexible Data model (can combine any type of data)
++ Economically cheap (Buy cheap servers, but alot of them)	
+NoSQL cons:
+- Lack of support (Since they are open-source)
+- Not as well known as RDBMS
+
+RelationalDB Pros:
++ Relational data (In many cases in real life the data needed to be stores are related somehow)
++ No repeated data (Since redundant data are avoided bymoving to another table)
+RelationalDB Cons:
+- You can need to do a lot of joins to get all the needed data (But this can be a problem with you DB structure the?)
+- Typically slower than NoSQl DB
+- More difficult to expand
+
+
+3) Explain how databases like MongoDB and redis would be classified in the NoSQL world
+- MongoDB is a document database, where you can look at is as if you are storing txt documents on your computer, they can differ in what data they hold.
+
+Redis is a key-value database where each value(data) in the database gets a key you can search for. thus making it extremely good at storing login information for instance.
+
+
+4) Explain reasons to add a layer like Mongoose, on top on of a schema-less database like MongoDB
+- Sometimes in the real life we have data that relate to each other, like it would make little sense to have a city without a zip code. since cities can have the same name.
+And mongoose makes this easy.
+Other than that, mongoose have tons of other features for simplifying your work. 
+It acts as a layer so you dont touch the source of MongoDB itself.
+It gives acces to an Object Document Mapping (ODM)
+You can avoid some deep callback structures.
+You get a way to refer to other collections in the database. Sort of like joins in SQL
+
+
+5) Explain, using relevant examples, the strategy for querying MongoDB (all CRUD operations)
+- See exercises - JokesApp
+NOTE - Edit joke does not work. something with the id not being sent when i do the post-call
+
+
+6) Demonstrate, using a REST-API, how to perform all CRUD operations on a MongoDB
+- Same as question 5
+
+
+7) Explain the benefits from using Mongoose, and provide an example involving all CRUD operations
+- I did not have time to implement and use mongoose
+
+
+8) Explain how redis "fits" into the NoSQL world, and provide an example of how to use it.
+- See question 3
+And look at exercise RedisTest where i make a simple key-value in the database and receive it again
+
+
+9) Explain, using a relevant example, how redis (or a similar) can increase scalability (drastic) for a server using server side sessions
+- Did not do this part.
+
+
+10) Explain, using a relevant example, a full MEAN application including relevant test cases to test the REST-API (not on the production database)
+- I did not test these jokes exercises
+But in the class we did the exercise i have in the MeanProject1 folder 
+
+
+

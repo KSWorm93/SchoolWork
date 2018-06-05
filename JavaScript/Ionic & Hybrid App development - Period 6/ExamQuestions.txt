@@ -1,0 +1,74 @@
+Explain the concept of Hybrid Mobile App Development
+-------
+The idea about building apps with web technologies like HTML/JS is that you
+can easily get the app spread out on different platforms by using a 
+compiler that translates the code to the native language of your device.
+-------
+
+Explain the Pros & Cons of using Hybrid Mobile App Development
+compared to Native App Development
+-------
+Hybrid Apps
+PROS
++Easily spread to different platforms
++You dont need to know different languages for each platform
++It can be deployed on the app-store
++You dont need to change code in multiple languages when adding new features/optimising.
+CONS
+-Not as fast as native apps.
+-You will not have the same in depth ways of using the devices components as native apps.
+
+Native Apps
+PROS
++Full acces to the devices components
++It's fast performance
+CONS
+-It can be expensive if you need to change soemthing in your code and you are on multiple platforms since its many different languages.
+-You need to develop the apps for different platforms.
+-------
+
+Explain about the "building blocks" involved in an ionic Hybrid Application
+-------
+Angular controls the logic of the presentation layer. 
+The app is build and styled by HTML and CSS
+Cordova is used to access the devices native components.
+-------
+
+Explain and demonstrate ways to debug Hybrid Mobile Applications Running on a real device
+-------
+You can easily debug a hybrid app by using your device and webbrowser.
+Step by step guide.
+1. Enable USB debugging on your device. (You will usually need to enable developer mode first)
+2. Open chrome and navigate to chome://inspect
+3. Select your device
+4. Press inspect and start debugging.
+-------
+
+Explain when and why CORS is a problem for Hybrid Mobile Applications
+-------
+Cross Origin Ressource Sharing (CORS) is a safety feature in modern
+browsers that does not allow the website to make an HTTP request to a url that 
+is not the same as the root of the site. This can cause problems in Hybrid 
+App development when trying to use an API like Google Maps that has a 
+different url than the app has when developing it.
+There is different ways to solve this problem.
+one solution is to make a Access-Control-Allow-Origin * to allow request from all locations
+Another is to specify the request to go through a proxy and make the proxy 
+talk to the backend instead of you directly.
+-------
+
+Explain how and why it is possible for a Hybrid Application to access native phone devices like location, calendar etc.
+-------
+Hybrid apps use a frameworks like cordova which lets you easily use the devices components. 
+Cordova acts as a container for running web applications so you can easily 
+use different platforms for your webapp
+-------
+
+Explain using an example the "fundamentals" of an ionic application.
+-------
+See IonicDemo for code
+-------
+
+Explain using an example how your Hybrid Application communicates with a backend and how CORS problems were solved (if any)
+-------
+-------

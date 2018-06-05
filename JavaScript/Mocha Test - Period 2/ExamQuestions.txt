@@ -1,0 +1,75 @@
+***Exam questions - MEAN period 2***
+
+1)
+Why would you consider a Scripting Language as JavaScript as your Backend Platform.
+-----
+There can be multiple reasons to use javascript as your only language when making webapplications. one of them is that you only need to learn 1 language for it to be succesfull. Another reason is that javascript is really fast when not doing heavy work, since its run in the browser and doesnt need to be compiled like Java needs to.
+-----
+
+2)
+Explain Pros & Cons in using Node.js + Express to implement your Backend compared to a strategy using for example Java/JAX-RS/Tomcat
+-----
+Pros:
+Its fast when doing simple work.
+You only need 1 language to make it work, so you can dive deeper into that one language, instead of learning multiple ones.
+Node Package Manager(NPM) contains a ton of libraries you can use.
+Cons:
+Not good at CPU heavy stuff.
+NPM gets new packages all the time, so which one you should choose can be a bit tricky.
+If an unhandles error is trhown, it can cause major damage and possibly shutdown the whole system.
+-----
+
+3)
+Node.js uses a Single Threaded Non-blocking strategy to handle asynchronous task. Explain strategies to implement a Node.js based server architecture that still could take advantage of a multi-core Server.
+-----
+Node can be made to function better at multicore systems by using something called clusters, which creates child processes that can do something other than the main process
+-----
+
+4)
+Explain, using relevant examples, concepts related to the testing a REST-API using Node/JavaScript + relevant packages
+-----
+See problem 2-4 test folder. Where i have done a simple POST call.
+-----
+
+5)
+Explain, using relevant examples, the Express concept; middleware.
+-----
+Middleware are functions that does something with the request and response objects in each call to the server.
+See problem 2-4 app.js for usage of middleware
+-----
+
+6)
+Explain, using relevant examples, how to implement sessions, and the legal implications of doing this.
+-----
+Sessions are piece of data stored on the server, and they can create cookies that are stored on the clients computer for a specifik time. The cookie is used to identify the unique client so the server can identify him when he returns.
+The cookie can also store user preferences, like login credentials, different settings on the webpage(eg. colour theme)
+But it can also store trafic from the individual user, making it illegal, unless told and accepted by the user.
+See problem 2-4 layout.jade for implementing of the cookie warner and app.js/login.jade for the creation of the session
+-----
+
+7)
+Compare the express strategy toward (server side) templating with the one you used with Java on second semester.
+-----
+On second semester we used something like this: Model-Controller-Servlet-JSP
+where we transfer the data from the model via the controller to the servlet that renders the jsp page which gives us the HTML page we can see in our browser.
+On fourth semester we use something like this: Model-Controller/Router-"Template"
+where the tamplate is some sort of render for our HTML pages, more commonly used ones are Jade,HandleBars,EJS
+-----
+
+8)
+Explain, using a relevant examples, your strategy for implementing a REST-API with Node/Express and show how you can "test" all the four CRUD operations programmatically using for example the Request package.
+-----
+See problem2-4 test folder
+-----
+
+9)
+Explain, using relevant examples, about testing JavaScript code, relevant packages (Mocha etc.) and how to test asynchronous code.
+-----
+To test javascript code we can use something called Mocha, which is a test framework designed for javascript, it allows you to describe your test and what it should do. but to get a full testing framework and assert that its possible to do what you says it should do, we need to include an assertion library, since Mocha does not ship with it, we use Chai for that. So now that we have all our libraries to use we can write tests.
+See MochaTestDemo for a simple test.
+-----
+
+10)
+Explain, using relevant examples, different ways to mock out databases, HTTP-request etc.
+-----
+-----

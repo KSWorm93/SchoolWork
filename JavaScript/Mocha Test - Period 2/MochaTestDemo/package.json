@@ -1,0 +1,14 @@
+{
+  "name": "testdemo",
+  "version": "1.0.0",
+  "description": "test demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0"
+  }
+}

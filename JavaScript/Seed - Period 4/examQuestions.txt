@@ -1,0 +1,129 @@
+Explain basic security terms like authentication, authorization, confidentiality, integrity, SSL/TLS and provide examples of how you have used them.
+
+Authentication: Identifying that the client is infact the right client. Usually done with a username-password combination.
+
+Authorization: What are you allowed to see, do, add, delete, so on. For instance, the normal user should usually not be allowed to delete other users information. so he is not authorized to use that function in the program.
+
+Confidentiality: Keeping sensitive data secure from third-party users. Its commonly passwords you try to protect. and it can(and should) be done by using a form of encruption.
+
+Integrity: Securing the data so it will not be altered without the users acceptance.
+
+SSL & TLS: These are cryptographic protocols to secure communication between client and server. the certificates are handed out by approved providers.
+
+---------------------------------------
+Explain basic security threads like: Cross Site Scripting (XSS), SQL Injection and whether something similar to SQL injection is possible with NoSQL databases like MongoDB, and DOS-attacks. Explain/demonstrate ways to cope with these problems
+
+Cross Site Scripting (XSS): This is usually done when 1 user, exploits a vulnerability in a webapplication to run one of his scripts on the others clients computers through the website. 
+Example: A user searches the website for the word puppy. no results and the website writes "not found". so far everything is pretty normal. 
+Next the user searches for this: "<script type='text/javascript'>alert('xss');</script>"
+And while it searched an alert will popup and the website will render the result page with "<script type='text/javascript'>alert('xss');</script> not found", but the script part was running at the same time, thus exploiting a vulnerability in the website.
+A way to avoid this is to check the text before doing anything with it, and if it contains <script> in it, just deny it from the start.
+
+SQl Injection: This is a technique to maliciously exploit applications that use client supplied data in SQL statements. The attacker can trick the engine into executing the wrong commands by supplying it with the right inputs. 
+To avoid it you can in java use the PreparedStatement since the data will be inserted directly in the database.
+NoSQL does not imply zero risk. NoSQL databases are vulnerable to injection attacks.
+One of the common reasons for a SQL injection vulnerability is building the query from string literals which include user input without using proper encoding. 
+If you are attacked by SQL injections, make sure you do not give the attacker more information, by fx posting the error to the user(this case, the attacker) so he will know what went wrong. try to keep the technical away from users.
+
+DOS: Denial of Service, is when 1 or more attackers try to send loads of requests to your server in a very short amount of time, and simply pressure your server so much it cannot keep up.
+Ways to avoid it could be to purchase more bandwidth, giving your server more "power" to handle more users, this however could be very expensive.
+Another solution could be to check the ip's of the users and if the requests come from the same ip multiple times within a short amount of time, then block them out.
+
+---------------------------------------
+Explain, at a fundamental level, the technologies involved, and the steps required initialize a SSL connection between a browser and a server and how to use SSL in a secure way.
+
+1. The browser will Request the web server identify itself.
+2. This prompts the web server to send the browser a copy of the SSL Certificate.
+3. The browser checks to see if the SSL Certificate is trusted.
+4. If the SSL Certificate is trusted, then the browser sends a message to the Web server.
+5. The server then responds to the browser with a digitally signed acknowledgement to start an SSLencrypted session. This allows encrypted data to be shared between the browser and the server. You may notice that your browsing session now starts with https (and not http).
+
+---------------------------------------
+Explain and demonstrate ways to protect user passwords on our backends, and why this is necessary.
+
+It is a bad idea to store a users password in plain text, if the database is attacked and the attacker gets a hold of the password, its game over. so instead, if we need to store user information, we hash it. Meaning we take the users password and store it in a different way so it is not recognisable. fx if i type in the password "password" our hashing method could end up storing "p1123a2323s431s9842w123123o9834r1874d" in the database instead, making it harder to recognise. 
+
+---------------------------------------
+Explain about password hashing, salts and the difference between bcrypt and older (not recommended) algorithms like sha1, md5 etc.
+
+see question above.
+Salting a password together with a hashing is done by instead of just hashing the password, you add a "salt" to it, it is a unique text fx "195qmp" then you add this to your password so it becomes "195qmppassword" instead of just password, you then hash the "new" password and stores that together with the salt in your database so you can compare with the "real" password later on when needed.
+
+Bcrypt is an algorithm that uses Blowfish internally. It is not an encryption algorithm itself. It is used to irreversibly obscure passwords,
+just as hash functions are used to do a "one-way hash". It does this by using Blowfish to encrypt a magic string, using a key "derived"
+from the password. Later, when a user enters a password, the key is derived again, and if the ciphertext produced by encrypting with that
+key matches the stored ciphertext, the user is authenticated. The ciphertext is stored in the "password" table, but the derived key is
+never stored.
+
+The reason why this is so secure is that in order to break the cryptography here, an attacker would have to recover the key from the
+ciphertext. This is called a "known-plaintext" attack, since the attack knows the magic string that has been encrypted, but not the key
+used. Blowfish has been studied extensively, and no attacks are yet known that would allow an attacker to find the key with a single known
+plaintext.
+
+MD5 and SHA1 are general purpose hash functions, designed to calculate a digest of huge amounts of data in as short a time as possible.
+This means that they are fantastic for ensuring the integrity of data and utterly rubbish for storing passwords.
+
+The difference between older versions like MD5 and SHA1 and bcrypt is that while bcrypt is far slower. This is also what makes MD5 and
+SHA1 weak, because they are so fast.
+A modern server can calculate the MD5 hash of about 330MB every second. If your users have passwords which are lowercase, alphanumeric, and
+6 characters long, you can try every single possible password of that size in around 40 seconds. With bcrypt instead of the server cracking
+a password every 40 seconds, I’d be cracked in 12 years or even not at all. This is illustrated in the example below.
+
+---------------------------------------
+Explain about JSON Web Tokens (jwt) and why they are very suited for a REST-based API
+
+JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object.
+
+This information can be verified and trusted because it is digitally signed.
+
+JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA
+
+Benefits of using JWT:
+Compact: Because of its smaller size, JWTs can be sent through an URL, POST parameter, or inside an HTTP header.
+
+The payload contains all the required information about the user, avoiding the need to query the database more than once
+
+JSON Web Tokens consist of three parts separated by dots:
+
+xxxxxx.yyyyyy.zzzzzz
+
+Header: The header typically consists of two parts: the type of the token (=JWT), and the hashing algorithm being used (HMAC SHA256 or RSA)
+
+Payload: The second part of the token is the payload, which contains the claims. Claims are statements about an entity (typically, the user) and additional metadata. There are three types of claims: reserved, public, and private claims (next slide).
+
+Signature: The signature part is created by taking the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that. The signature is used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn't changed along the way.
+
+JSON Web Tokens (JWT) are a more modern approach to authentication. As the web moves to a greater separation between the client and server, JWT provides a wonderful alternative to traditional cookie based authentication models.
+JWTs provide a way for clients to authenticate every request without having to maintain a session or repeatedly pass login credentials to the server.
+In other words JWT is a fantastic and simple way to communicate trusted information across untrusted channels.
+
+
+---------------------------------------
+Explain and demonstrate a system using jwt's, focusing on both client and server side.
+
+See the Seed for example.
+
+---------------------------------------
+Explain and demonstrate use of the npm passportjs module
+
+Passport's sole purpose is to authenticate requests, which it does through an extensible set of plugins known as strategies. Passport does not mount routes or assume any particular database schema, which maximizes flexibility and allows application-level decisions to be made by the developer. The API is simple: you provide Passport a request to authenticate, and Passport provides hooks for controlling what occurs when authentication succeeds or fails.
+
+See the Seed for example.
+
+---------------------------------------
+Explain, at a very basic level, OAuth 2 + OpenID Connect and the problems it solves.
+
+OAuth is an authentication protocol that allows users to register with your web application using an external provider, without the need to input their username and password. OAuth is mainly used by social platforms, such as Facebook, Twitter, and Google, to allow users to register with other websites using their social account.
+
+OAuth 2.0, is a framework, specified by the IETF in RFCs 6749 and 6750 designed to support the development of authentication and authorization protocols. It provides a variety of standardized message flows based on JSON and HTTP
+
+OpenID lets app and site developers authenticate users without taking on the responsibility of storing and managing passwords in the face of an Internet that is well-populated with people trying to compromise your users’ accounts for their own gain.
+
+---------------------------------------
+Demonstrate, with focus on security, a proposal for an Express/Mongo+Angular-seed with built in support for most of the basic security problems, SSL and ready to deploy on your favourite Cloud Hosting Service.
+
+Look at Seed. 
+
+Known issues with the seed:
+ - 1 of them is that i do not check if the user already exist when signing up, and you can therefor make multiple accounts with the same information. I ran out of time before i got to fix it.
+ - Another is that it is not ready for cloud hosting yet.

@@ -1,0 +1,76 @@
+1: Name attributes of HTTP protocol makes it difficult to use for real time systems.
+------------
+One of the biggest issues is that the http protocols is designed so that it makes a request to the server everytime it needs something, it opens a port and respond to the client. When it is done, it closes down the port again and says goodbye to the client. now if a user needs to receive something else(for instance another message sent from another user) it will need to open up a port again, meaning it will need to request something again. and this process takes time. making it not ideal for a real time application. and the more users there is, there longer it could potentially take.
+------------
+
+2: Explain polling and long-polling strategies, their pros and cons.
+------------
+Polling:
+A client requests something from a server and waits for a response. in a chat application the polling would typically be something where a client asks(requests) the server once every 5-10 seconds if a new message appered, and if a new message(s) appeared, the server will respond with it, and if not, it would typically respond with nothing, leaving the chatfield the same as it was. This takes a bit of resource everytime the clients need to request something from the server.
+
+Long Polling:
+In long polling it basicly starts the same with the user requesting the server for any updates, but instead of responding instantly, the server waits until a new message appears and after that sends that message to the user, and the users will then immediately send a new request and so on. This will decrease the amount of resources needed, since there is not constantly sent something back and forth.
+------------
+
+3: What is HTTP streaming, SSE (Server sent events)?
+------------
+Server-sent events is a standard describing how servers can initiate data transmission towards clients once an initial client connection has been established. They are commonly used to send message updates or continuous data streams to a browser client and designed to enhance native, cross-browser streaming through a JavaScript API called EventSource, through which a client requests a particular URL in order to receive an event stream.
+
+When communicating using SSEs, a server can push data to your app whenever it wants, without the need to make an initial request. In other words, updates can be streamed from server to client as they happen. SSEs open a single unidirectional channel between server and client.
+------------
+
+4: What is WebSocket protocol, how is it different from HTTP communication, what advantages it has over HTTP?
+------------
+WebSockets represent a client/server web technology. They allow a long-held single TCP socket connection to be established between the client and server which allows for bi-directional, full duplex, messages to be instantly distributed with little overhead resulting in a very low latency connection.
+------------
+
+5: Explain what the WebSocket Protocol brings to the Web-world
+------------
+TWhat WebSocket brings to the Web-world is that it provides full-duplex communication unlike HTTP. This means that webSockets allows
+communication in both directions, and,unlike half-duplex, allows this to happen simultaneously.
+Making it ideal for a chat application where multiple parts will need to send messages at any time. 
+------------
+
+6: Explain and demonstrate the process of WebSocket communication - From connecting client to server, through sending messages, to closing connection.
+------------
+See code for example on how to use it.
+------------
+
+7: What's the advantage of using libraries like Socket.IO, Sock.JS, WS, over pure WebSocket libraries in the backend and standard APIs on frontend? Which problems do they solve?
+------------
+They simplify most of the work. and in some cases will also provide the developer with more features which potentially could solve your problems faster.
+------------
+
+8: What is Backend as a Service, Database as a Service, why would you consider using Firebase in your projects?
+------------
+Backend as a Service, or BaaS (sometimes referred to as mBaaS) is best described by a tech analyst who refers to it as “turn-on infrastructure” for mobile and web apps. Basically, it’s a cloud computing category that’s comprised of companies that make it easier for developers to setup, use and operate a cloud backend for their mobile, tablet and web apps.
+
+Database as a Service (DBaaS) is a cloud-based approach to the storage and management of structured data. DBaaS delivers database functionality similar to what is found in relational database management systems (RDBMSes) such as SQL Server, MySQL and Oracle. Being cloud-based, on the other hand, DBaaS provides a flexible, scalable, on-demand platform that's oriented toward self-service and easy management,
+particularly in terms of provisioning a business' own environment. DBaaS products typically provide enough monitoring capabilities to track performance and usage and to alert users to potential issues. The products can also generate at least some degree of data analytics.
+
+Since Firebase isn’t just any ordinary database, it is a real-time, scalable backend, which provide the tools you need to quickly build rich, collaborative applications that can serve millions of users, only developing client code. Firebase even provides the possibility for authentication. The reasons above describes why i think you should consider using Firebase in your projects.
+------------
+
+9: Explain the pros & cons of using a Backend as a Service Provider like Firebase.
+------------
+Pros:
++ Its scalable
++ Its flexible
++ its easy to use
++ Cross Platform API
++ Built in support for facebook/google authentication
+Cons:
+- You do not have complete control over it
+- It costs money
+------------
+
+10: Explain and demonstrate “three-way data binding” using Firebase and Angular
+------------
+Havent used firebase
+------------
+
+11: Explain and demonstrate the difference between the simple chat system in your own WebSocket + Node.js backend vs. Firebase.
+------------
+Havent used firebase
+------------
+

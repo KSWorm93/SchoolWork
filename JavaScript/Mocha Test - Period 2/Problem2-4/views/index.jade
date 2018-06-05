@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+    div
+        h1= title
+        p Welcome to #{title} <strong>#{userName}</strong>
+    div
+        a(href='/allJokes') All Jokes
+        br
+        a(href='/randomJoke') Random Joke
+        br
+        a(href='/addJoke') Add Joke
+
