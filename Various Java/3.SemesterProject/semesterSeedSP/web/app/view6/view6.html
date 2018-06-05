@@ -1,0 +1,21 @@
+<div ng-controller="View6Ctrl as ctrl" class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+    <div class="login_panel panel panel-default col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+        <div class="panel-heading">Create user</div>
+        <div class="panel-body">
+            <form ng-submit="ctrl.addUser()">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="ctrl.user.userName" placeholder="Username" />
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" ng-model="ctrl.user.password" placeholder="Password" />
+                </div>
+
+                <button class="btn btn-lg btn-info btn-block" type="submit" >Create user</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-success" role="alert" ng-show="ctrl.success">{{ctrl.successMessage}}</div>
+    <div class="alert alert-danger" role="alert" ng-show="ctrl.error">{{ctrl.error}} - {{ctrl.errorMessage}}</div>
+</div>

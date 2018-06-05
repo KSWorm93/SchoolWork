@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<div>
+    <div ng-controller="View7Ctrl as ctrl" class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+        <div class="login_panel panel panel-default">
+            <div class="panel-heading">Reservations for {{username}}</div>
+            <div class="panel-body">
+                <table class="table table-striped table-hover reservationTable">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>Origin</th>
+                            <th>Destination</th>
+                            <th>Date</th>
+                            <th>Seats</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="reservation in ctrl.reservations" ng-click="ctrl.goToDetail(reservation)">
+                            <td><i class="glyphicon glyphicon-plane"></i></td>
+                            <td>{{reservation.Origin}}</td>
+                            <td>{{reservation.Destination}}</td>
+                            <td>{{reservation.Date}}</td>
+                            <td>{{reservation.numberOfSeats}}</td>
+                            <td><a href="#/view9"><i class="glyphicon glyphicon-list"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

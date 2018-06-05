@@ -1,0 +1,215 @@
+<h2>Documentation</h2>
+<div>
+
+    <uib-accordion>
+        <uib-accordion-group heading="Github" >
+            <div>
+                Vi startede med at oprette to github repositories - en til serveren og en til clienten
+                Server: Link til serveren
+                Client: Link til clienten
+
+                I fredags løb vi dog ind i et større problem omkring commit/push af server koden til git’en. 
+                En løsning af dette problem blev at vi tog den nu opdateret kode (som ikke kunne push’es) 
+                og lavede et nyt repository. Da vi tidligere havde haft et større problem med Github, 
+                går vi altid med livrem og seler så vi laver jævnligt lokalt zip backup af projekterne, 
+                så hvis alt går galt at vi altid kan rekonstruere dem via disse.
+            </div>
+
+            <div>
+                <p>Links til github</p>
+                <a href="https://github.com/KSWorm93/Ca3Client">Client</a>
+                <br>
+                <a href="https://github.com/KSWorm93/Ca3Server">Server</a>
+            </div>
+
+        </uib-accordion-group>
+
+        <uib-accordion-group is-open="status.isFirstOpen" heading="Test Results" >
+            <p>Vi har lavet 3 forskellige slags tests</p>
+            <uib-accordion>
+                <uib-accordion-group heading="API testing" >
+                    <p>RestAssured API test</p>
+                    <div>
+                        API test ved hjælp af restAssured opbygning.
+                        <img src="view2/images/restAssuredApiTest.jpg" alt="RestAssured api test">
+
+                        Et eksempel på en af de tests vi har lavet er vores failSearchCompanyByName,
+                        hvor vi prøver at finde et firma som ikke findes.
+                        Det første der bliver gjort er at logge ind med en user, så vi har vores authentication
+                        token som vi skal bruge for at kunne søge som user.
+                        Derefter laver vi api kald som leder efter et firma med ugyldigt navn.
+                        Hvis resultatet er at den ikke finder noget, (statuscode(404)) er testen vellykket).
+                        Vi har brugt restAssured test til at teste vores forskellige api kald som blev brugt i
+                        vores projekt.
+
+                    </div>
+                </uib-accordion-group>
+                <uib-accordion-group heading="Frontend Test" >
+                    <p>Frontend unit testing</p>
+                    <div>
+                        Front end test har været en stor udfordring for os da vi ikke havde den store erfaring i 
+                        at bruge det.
+                        Vi har testet de controllers vi har i vores .JS filer i frontend
+                    </div>
+                    <img src="view2/images/frontendTest.jpg" alt="Frontend test">
+                </uib-accordion-group>
+                <uib-accordion-group heading="Backend test" >
+                    <p>Backend unit testing</p>
+                    <div>
+                        Vores backend tests er lavet af JUnit tests, hvor vi tester metoderne i vores
+                        userFacade
+                        Den ene af de JUnit tests vi har lavet er, hvor vi forsøger at hente dagens
+                        currencies, som består af 33 forskellige currencies.
+                        Testen vil derfor fejle hvis den får et tal der er mindre end 33 ud.
+
+                        <img src="view2/images/backendTest.jpg" alt="Backend test">
+                    </div>
+                </uib-accordion-group>
+            </uib-accordion>
+
+        </uib-accordion-group>
+
+        <uib-accordion-group heading="Kode" >
+            <p>Forskellige teknologier vi har brugt og hvordan</p>
+            <uib-accordion>
+                <uib-accordion-group heading="XML håndtering" >
+                    <div>
+                        Vi bruger Javas SAX-API for at læse Nationalbankens valutakurser via deres api. 
+                        I vores control.XmlReader.java klasse håndtere vi dette opkald, og redefinerer stream’et så det passer til vores behov - 
+                        jvf. vores Exchange Rate Info view.
+
+                        Ydermere har vi sat en ExecutorService på dette kald, så det bliver foretaget en gang i døgnet. 
+                        På den måde får vi lagt de nyeste kurser i vores database (med date-stamp), så der er også en historik her 
+                        samt at useren vil få de nyeste kurser når vedkommende tilgår databasen via Exchange Rate Info.
+
+                    </div>
+                </uib-accordion-group>
+                <uib-accordion-group heading="REST" >
+                    <div>
+                        Vi bruger REST til når vi skal hente information fra vores database og data ude fra
+                        ved at lave api kald. Den måde vi håndterer vores data på, gør vi ved hjælp af JSON 
+                        format som er en nyere måde at gøre det på end med XML. Den data vi får ud med
+                        JSON gør at det er nemt og ligetil at arbejde med.
+                    </div>
+                </uib-accordion-group>
+                <uib-accordion-group heading="Angular.js" >
+                    <div>
+                        Angular samt HTML er størstedelen af hvad vores frontend består af, HTML er brugt
+                        til at bygge selve sitet op hvor vi så bruger Angular til at styre funktionaliteten på
+                        siden til hurtigt og effektivt gøre som vi ønskede det med dens smarte funktioner.
+                    </div>
+                </uib-accordion-group>
+            </uib-accordion>
+        </uib-accordion-group>
+
+        <uib-accordion-group heading="How to use" >
+            <uib-accordion>
+                <uib-accordion-group heading="Use the site">
+                    <div>
+                        <div>
+                            Da databasen er tom første gang man kører programmet, kan man køre schemabuilderen (Server -> Facades). 
+                            <br>
+                            Den opretter databasen med tre burgere - admin, user og en admin_user og deres respektive passwords 
+                            samt tabellen der bliver brugt i forbindelse med valuta delen.
+                        </div>
+                        <br>
+                        <div>
+                            Alle har mulighed for at se [Documentation] og [Create new account].
+                        </div>
+                        <br>
+                        <div>
+                            Login: Admin (login: admin      password: test)
+                            <br>
+                            Admin som den eneste rettigheder til at se [All Users]. 
+                            <br>
+                            Her kommer en oversigt over alle brugere i systemet 
+                            samt en metode til at slette de enkelte brugere (inkl. sig selv som måske nok ikke burde være en mulighed).
+
+                            Login: User (login: user      password: test)
+                            <br>
+                            User har tilgang til  [Company Info] og [Exchange Rate Info].
+                        </div>
+                    </div>
+                </uib-accordion-group>
+
+                <uib-accordion-group heading="Company info">
+                    <div>
+                        I første dialogfelt, indtastes det der skal søges på 
+                        <br>
+                        f.eks. navn eller cvr nummer 
+                        på det firma man vil slå op og det næste dialogfelt udfyldes i forhold til dette. 
+                        <br>
+                        Sidste dialogfelt har kun en mulighed og det er i hvilket land, firmaet er registreret i.
+                    </div>
+                    <br>
+                    <div>
+                        F.eks. på opslag:
+                        31678021, CVR, DK
+                        <br>
+                        Dette giver en oversigt over alle de afdelinger der ligger under Cph Business (jvf. cvr nummeret). 
+                        <br>
+                        Hvis man så klikker på Cphbusiness Lyngby, 
+                        vil man få yderligere informationer fra Cphbusiness Lyngby vist.
+                    </div>
+                </uib-accordion-group>
+
+                <uib-accordion-group heading="Exchange rate">
+                    <div>
+                        I dette view, vil der blive vist et udtræk fra Nationalbankens officielle dagskurser fra den samme dag 
+                        <br>
+                        (bemærk at Nationalbanken opdaterer deres kurser kl. 14:15). 
+                        <br>
+                        Databasen gemmer automatisk dagskurserne løbende en gang i døgnet 
+                        (dvs. så længe serveren kører).
+                    </div>
+                    <br>
+                    <div>
+                        Man har også adgang til en Currency calculator, som kan omregne fra - og mellem - alle de viste valutaer inkl. dansk.
+                        <br>
+                        Den bruges ved at du vælger hvad du vil omregne fra(første boks) 
+                        og hvad du vil have det omregnet til(næste boks) og hvad beløbet er.
+                    </div>
+                </uib-accordion-group>
+
+            </uib-accordion>
+        </uib-accordion-group>
+
+        <uib-accordion-group heading="Who did what" >
+            <div>
+                Frontend - Kasper, Martin, Rasmus
+                <br>
+                Backend - Kasper, Martin, Rasmus
+                <br>
+                Frontend test - Kasper
+                <br>
+                Backend test - Kasper, Rasmus
+                <br>
+                Restassured test - Martin
+                <br>
+                Dokumentation - Kasper, Rasmus
+                <br>
+                Deployment - Kasper, Martin, Rasmus
+            </div>
+        </uib-accordion-group>
+
+        <uib-accordion-group heading="Generel konklusion" >
+            <div>
+                Projektet har været lærerigt, idet man har fået nogle nye teknologier at bruge (XML og JSON som eksempler).
+                <br>
+                Det skal godt nok siges at det ikke var uden problemer, specielt i test delen af
+                opgaven, og endnu nærmere frontend test.
+                <br>
+                Frontend testning har været udfordrende da det var helt nyt og vi ikke har haft meget
+                undervisning i det.
+                <br>
+                Til gengæld har vi formået at få nogenlunde styr på persistence unit’en. De fejl og problemer vi fik her, 
+                var til at løse (clean-and-build, slet persistence uniten og lav en ny), 
+                gjorde at vi kunne håndtere de fejl der kom uden de største vanskeligheder.
+                <br>
+                Github’en drillede lidt en enkel gang, men ellers har arbejdet med denne, 
+                været gnidningsløst da vi har lært af tidligere erfaringer om ikke at arbejde i de samme filer på samme tid.
+            </div>
+        </uib-accordion-group>
+
+    </uib-accordion>
+</div>

@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <div class="container-fluid wrapper-bg2">
+        <div class="container">
+            <div class="row wrapper-row">
+                <div class="wrapper-btn"> <a href="#">flights</a> </div>
+                <div class="wrapper-form-block">
+                    <form method="post" role="form" class="form-horizontal" ng-submit="ctrl.searchFlight()">
+                        <div class="col-lg-2 col-md-2 col-sm-2 wrapper-mdcol" style="overflow:hidden;">
+                            <div class="form-group">
+                                <div class="col-md-12 wrapper-mdcol">
+                                    <i class="fa fa-map-marker"></i>
+                                    <input type="text" value="" placeholder="Enter origin city" id="name" class="form-control form-con" 
+                                           ng-model="ctrl.search.origin" 
+                                           ng-change="airportOriginFilter=ctrl.search.origin">
+                                    <ul class="airport-suggestion" ng-show="airportOriginFilter.length > 0">
+                                        <li ng-repeat="airport in ctrl.airports |filter: airportOriginFilter |limitTo:4" 
+                                            ng-click="ctrl.chooseSuggestAirport(airport.city, airport.airportCode)">{{airport.city}} ({{airport.airportCode}})</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 wrapper-mdcol wrapper-md" style="overflow:hidden;">
+                            <div class="form-group">
+                                <div class="col-md-12">
+
+
+                                    <i class="fa fa-map-marker"></i>
+
+
+                                    <input type="text" value="" placeholder="Enter destination city" id="name" class="form-control form-con" 
+                                           ng-model="ctrl.search.destination"
+                                           ng-change="airportDestinationFilter=ctrl.search.destination">
+                                    <ul class="airport-suggestion" ng-show="airportDestinationFilter.length > 0">
+                                        <li ng-repeat="destination in ctrl.airports | filter:airportDestinationFilter |limitTo:4"
+                                            ng-click="ctrl.chooseSuggestDestinationAirport(destination.city, destination.airportCode)">{{destination.city}} ({{destination.airportCode}})</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DatetimePicker start -->
+                        <div class=" col-lg-2 col-md-2 col-sm-2 wrapper-mdcol wrapper-md wrapper-datetimepicker" style="overflow:hidden;">
+                            <div id="datetimepicker" class="input-append date"> 
+                                <input type="date" ng-model="ctrl.search.dateStart" />
+                            </div>
+                        </div>
+                        <!-- 
+                            2 datepicker 
+                        -->
+                        <!--<div class="col-md-2 wrapper-datetimepicker" style="overflow:hidden;">
+                            <div id="datetimepickernew" class="input-append date">
+                                <input type="date" ng-model="ctrl.search.dateEnd" />
+                            </div>
+                        </div>--!
+                        <!-- DatetimePicker end -->
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 wrapper-mdcol wrapper-md Passenger-block">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="btn-group Passenger">
+                                        <select class="form-control btn btn-default dropdown-toggle" ng-model="ctrl.search.passengers">
+                                            <option class="placeholder" selected disabled value="">Select passangers</option>
+                                            <option selected="selected" value="1">1 Passenger</option>   
+                                            <option value="2">2 Passenger</option>   
+                                            <option value="3">3 Passenger</option>   
+                                            <option value="4">4 Passenger</option>   
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 wrapper-mdcol wrapper-md Passenger-block search-btn" style="overflow:hidden;">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-default">SEARCH </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 
+        Results 
+    -->
+    <div class="container">
+        <div class="row wrapper-row">
+            <div class="field_panel panel panel-default col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2" style="padding-top: 20px;" ng-show="ctrl.resultFlights.length > 0">
+                <div ng-repeat="airline in ctrl.resultFlights">
+                    <div class="well field_well" ng-repeat="flight in airline.flights" >
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <h4>{{airline.airline}}</h4>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <h4>{{flight.origin}} <i class="glyphicon glyphicon-plane"></i> {{flight.destination}}</h4>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <h4>{{flight.totalPrice}} EUR</h4>
+                            <a href="#/view5"><button type="button"  class="btn-order btn btn-default" ng-click="ctrl.orderFlight(flight)">Order</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="alert alert-danger col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4" ng-show="ctrl.error">{{ctrl.errorMessage}}</div>
+</div>

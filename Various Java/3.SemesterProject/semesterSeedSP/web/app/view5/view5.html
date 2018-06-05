@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div ng-controller="View5Ctrl as ctrl" class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+
+    <div class="alert alert-danger col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4" ng-show="ctrl.error">{{ctrl.errorMessage}}</div>
+    <div class="alert alert-success col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4" ng-show="ctrl.success">{{ctrl.successMessage}}</div>
+
+    
+    <div>
+        <div class="panel panel-default" ng-show="!isAuthenticated">
+            <p>Please login to make a flight reservation</p>
+            <p>If you don't have a user, please register.</p>
+            <a href="#/view4">Login</a>
+            <a href="#/view6">Register</a>
+        </div>
+        
+        <div ng-show='isAuthenticated' class="login_panel panel panel-default col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+            <div class="panel-heading">Reservation</div>
+            <div class="panel-body">
+                <form ng-submit="ctrl.makeReservation()">
+                    <input type="text" class="form-control grey" ng-model="username" readonly />
+                    <input type="text" class="form-control" ng-model="ctrl.reservee.phone" placeholder="phone" />
+                    <input type="text" class="form-control" ng-model="ctrl.reservee.email" placeholder="email" />
+                    <div class="form-group">
+                        <label class="reserveLabel">Passenger 1</label>
+                        <input type="text" class="form-control" placeholder="Firstname" 
+                            ng-model="ctrl.reservee.passengers[0].firstName" />
+                        <input type="text" class="form-control" placeholder="Lastname"
+                            ng-model="ctrl.reservee.passengers[0].lastName" />
+                    </div>
+                    <div class="form-group" ng-show="ctrl.reserveInfo.passengers > 1">
+                        <label class="reserveLabel">Passenger 2</label>
+                        <input type="text" class="form-control" placeholder="Firstname"
+                            ng-model="ctrl.reservee.passengers[1].firstName" />
+                        <input type="text" class="form-control" placeholder="Lastname"
+                            ng-model="ctrl.reservee.passengers[1].lastName" />
+                    </div>
+                    <div class="form-group" ng-show="ctrl.reserveInfo.passengers > 2">
+                        <label class="reserveLabel">Passenger 3</label>
+                        <input type="text" class="form-control" placeholder="Firstname"
+                            ng-model="ctrl.reservee.passengers[2].firstName" />
+                        <input type="text" class="form-control" placeholder="Lastname"
+                            ng-model="ctrl.reservee.passengers[2].lastName" />
+                    </div>
+                    <div class="form-group" ng-show="ctrl.reserveInfo.passengers > 3">
+                        <label class="reserveLabel">Passenger 4</label>
+                        <input type="text" class="form-control" placeholder="Firstname"
+                            ng-model="ctrl.reservee.passengers[3].firstName" />
+                        <input type="text" class="form-control" placeholder="Lastname"
+                            ng-model="ctrl.reservee.passengers[3].lastName" />
+                    </div>
+                    <button class="btn btn-lg btn-info btn-block" type="submit">Make Reservation</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

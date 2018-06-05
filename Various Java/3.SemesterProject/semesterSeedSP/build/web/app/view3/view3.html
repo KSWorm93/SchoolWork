@@ -1,0 +1,14 @@
+<div ng-controller="View3Ctrl as ctrl" class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2" style="margin-top: 20px;">
+    <div class="login_panel panel panel-default">
+        <div class="panel-heading">{{username}}</div>
+        <div class="panel-body">
+            <form role="form" ng-submit="ctrl.editUser()">
+                <div class="form-group">
+                    <input type="password" class="form-control" ng-model="ctrl.user.password" placeholder="Password" />
+                </div>
+
+                <button class="btn btn-lg btn-info btn-block" type="submit" >Update</button>
+            </form>
+        </div>
+    </div>
+</div>

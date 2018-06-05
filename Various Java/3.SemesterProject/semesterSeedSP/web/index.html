@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Find My Flight</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">   
+        <link rel="stylesheet" href="app/app.css"> 
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+
+        <!-- In production use:
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+        -->
+        <script src="app/bower_components/angular/angular.js"></script>
+        <script src="app/bower_components/angular-route/angular-route.js"></script>
+        <script src='app/bower_components/angular-animate/angular-animate.min.js'></script>
+        <script src="app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/view1/view1.js"></script>
+        <script src="app/view2/view2.js"></script>
+        <script src="app/view3/view3.js"></script>
+        <script src="app/view4/view4.js"></script>
+        <script src="app/view5/view5.js"></script>
+        <script src="app/view6/view6.js"></script>
+        <script src="app/view7/view7.js"></script>
+        <script src="app/view8/view8.js"></script>
+        <script src="app/view9/view9.js"></script>
+        <script src="app/components/authentication.js"></script>
+        <script src="app/components/filters.js"></script>
+        <script src="app/components/directives.js"></script>
+        <script src="app/components/factories.js"></script>
+        <script src="app/components/services.js"></script>
+
+
+        <link href="css/style.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+        <link href='https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css' rel='stylesheet' type='text/css'>
+
+        <!-- Bootstrap -->
+
+        <!-- datetimepicker css -->
+
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" media="screen"
+              href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+
+        <!-- datetimepicker css end -->
+
+        <link href="css/bootstrap.css" rel="stylesheet">
+
+    </head>
+    <body ng-app="myApp">
+
+        <div class="container-fluid wrapper-header-bg">
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar navbar-default" role="navigation" ng-controller="AppLoginCtrl"> 
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                            <a class="navbar-brand" href="#"><img src="images/logo.png" class="img-responsive" alt=""></a> </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#/view1">Home <span class="sr-only">(current)</span></a></li>
+                                <li ng-show="isAuthenticated"><a href="#/view7">My reservations<span class="sr-only"></span></a></li>
+                                <li ng-show="isAuthenticated"><a href="#/view8">All reservations <span class="sr-only"></span></a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <!-- Not logged in -->
+                                <li ng-show="!isAuthenticated"><a href="#/view4">Login</a></li>
+                                <li ng-show="!isAuthenticated"><a href="#/view6" class="last">sign up</a></li>
+                                <!-- Logged in -->
+                                <li ng-show="isAuthenticated"><a href="#/view3">{{username}} </a></li>
+                                <li ng-show="isAuthenticated"><a ng-click="logout()" href="#/view1" class="last">Logout</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse --> 
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <div>
+                    <div class="alert alert-danger" role="alert" ng-show="error">{{error}}</div>
+                    <div ng-view class="wrapper-bg"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid wrapper-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a target="_blank" href="https://www.dropbox.com/s/quta9kgcilaikk4/3.SemesterProjectDocumentation.pdf?dl=0">Documentation </a></li>
+                            <li><a target="_blank" href="https://github.com/KSWorm93/3.SemesterProject">Github (Web)</a></li>
+                            <li><a target="_blank" class="last" href="https://github.com/1martinkarlsen/AoA_Airline">Github (Airline)</a></li>
+                        </ul>
+                    </div>
+                    <div class="Copyright-text">
+                        <p>Copyright © 2015</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

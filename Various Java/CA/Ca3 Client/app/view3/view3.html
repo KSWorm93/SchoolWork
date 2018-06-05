@@ -1,0 +1,117 @@
+<h3>This is the partial for view 3.</h3>
+<div ng-controller="View3Ctrl as ctrl">
+    <div class="panel panel-default col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+        <div class="panel-heading col-lg-12 col-md-12 col-sm-12">Search</div>
+
+        <div class="panel-body">
+            <form ng-submit="ctrl.search()">
+                <!-- Search text -->
+                <div class="form-group">
+                    <label class="label">Search text</label>
+                    <input type="text" class="form-control" ng-model="ctrl.search.text" />
+                </div>
+
+                <!-- Search option -->
+                <div class="form-group">
+                    <label class="label">Options</label>
+                    <select class="form-control" ng-model="ctrl.search.option">
+                        <option value="vat">CVR</option>
+                        <option value="name">Name</option>
+                        <option value="produ">Produktionsenhed</option>
+                        <option value="phone">Telefonnummer</option>
+                    </select>
+                </div>
+
+                <!-- Search country -->
+                <div class="form-group">
+                    <label class="label">Country</label>
+                    <select class="form-control" ng-model="ctrl.search.country">
+                        <option value="dk">DK</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-info" type="submit">Search</button>
+            </form> 
+        </div>
+    </div>
+
+    <!--<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+        <h3>{{ctrl.company.name}}</h3>
+        <table class="table">
+            <tr>
+                <th>CVR-number</th>
+                <td>{{ctrl.company.vat}}</td>
+            </tr>
+            <tr>
+                <th>Zip + City</th>
+                <td>{{ctrl.company.zipcode}} {{ctrl.company.city}}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ctrl.company.email}}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ctrl.company.phone}}</td>
+            </tr>
+            <tr>
+                <th>Industry Description</th>
+                <td>{{ctrl.company.industrydesc}}</td>
+            </tr>
+            <tr>
+                <th>Start date</th>
+                <td>{{ctrl.company.startdate}}</td>
+            </tr>
+            <tr>
+                <th>Owners</th>
+                <td>{{ctrl.company.owners.name}}</td>
+            </tr>
+            <tr>
+                <th>Employees</th>
+                <td>{{ctrl.company.employees}}</td>
+            </tr>
+        </table>
+    </div>-->
+
+
+
+    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+
+        <div id="view3Alert"></div>
+
+        <uib-accordion ng-repeat="company in ctrl.company.productionunits">
+            <uib-accordion-group heading="{{company.name}}">
+                <table class="table">
+                    <tr>
+                        <th>CVR-number</th>
+                        <td>{{company.vat}}</td>
+                    </tr>
+                    <tr>
+                        <th>Zip + City</th>
+                        <td>{{company.zipcode}} {{company.city}}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{company.email}}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{company.phone}}</td>
+                    </tr>
+                    <tr>
+                        <th>Industry Description</th>
+                        <td>{{company.industrydesc}}</td>
+                    </tr>
+                    <tr>
+                        <th>Start date</th>
+                        <td>{{company.startdate}}</td>
+                    </tr>
+                    <tr>
+                        <th>Employees</th>
+                        <td>{{company.employees}}</td>
+                    </tr>
+                </table>
+            </uib-accordion-group>
+        </uib-accordion>
+    </div>
+</div>

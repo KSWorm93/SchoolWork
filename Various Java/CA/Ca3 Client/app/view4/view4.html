@@ -1,0 +1,65 @@
+<div ng-controller="View4Ctrl as ctrl" class="col-lg-12 col-md-12 col-sm-12">
+    
+    <div class="col-lg-5 col-md-5 col-sm-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Currency calculator</h3>
+            </div>
+
+            <div class="panel-body">
+                <form ng-submit="ctrl.calculate()">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <!-- From currency -->
+                        <h3>From</h3>
+                        <select class="currency_select col-lg-12 col-md-12 col-sm-12" ng-model="ctrl.fromCurrency.currency">
+                            <option value="DKK">DKK</option>
+                            <option ng-repeat="currency in ctrl.currencyRates" value="{{currency.shortDesc}}">
+                                {{currency.shortDesc}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <!-- To currency -->
+                        <h3>To</h3>
+                        <select class="currency_select col-lg-12 col-md-12" ng-model="ctrl.toCurrency.currency">
+                            <option value="DKK">DKK</option>
+                            <option ng-repeat="currency in ctrl.currencyRates" value="{{currency.shortDesc}}">
+                                {{currency.shortDesc}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top: 20px;">
+                        <input id="currency_amount" type="text" ng-model="ctrl.fromCurrency.amount" placeholder="Enter amount" />
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top: 20px;">
+                        <div id="toCurrency_result" class="well col-lg-12 col-md-12 col-sm-12">
+                            <p></p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <button class="btn btn-info col-lg-12 col-md-12 col-sm-12">Calculate</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1">
+        <table class="table">
+            <tr>
+                <th>Valuta</th>
+                <th>ISO</th>
+                <th>Dato: {{ctrl.dato}}</th>
+            </tr>
+
+            <tr ng-repeat="currency in ctrl.currencyRates">
+                <td>{{currency.longDesc}}</td>
+                <td>{{currency.shortDesc}}</td>
+                <td>{{currency.currency}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
